@@ -1,0 +1,18 @@
+﻿@model List<Entities.Entities.UserAndSecurity.Users>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+    @foreach (var item in Model)
+    {
+        
+    }
+<a asp-controller="Home" asp-action="Index" asp-area="Manage">
+    <div class="btn btn-default col-md-3">
+        Manage
+    </div>
+</a>

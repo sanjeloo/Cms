@@ -1,4 +1,58 @@
-﻿////--------------------check username validation---------------------------
+﻿
+
+///////////////////// add user //////////////////
+$('#btnCreate').click(function (event) {
+    debugger;
+    event.preventDefault();
+    if (!$('#frmCreateUser').valid()) {
+        return false;
+    }
+    $('#frmCreateUser').on('submit', function () {
+        $('#frmCreateUser').preventDefault();
+    })
+   
+    var model = $('#frmCreateUser').serializeArray();
+    $.ajax({
+        url: '/Manage/UserManagers/CreateUser',
+        type: 'post',
+        data:  model ,
+        success: function (result) {
+            debugger;
+            if (result.status == 200) {
+                notify(result.message, 'top', 'left', '', 'success', '', '');
+            }
+            else if (result.status == 501) {
+                notify(result.message, 'top', 'left', '', 'danger', '', '');
+               //$.each(result.errors, function (i, error) {
+               //    $.each(error.errors, function (j, item) {
+               //         $('#allError').append(createErrorElement(item.errooMessage))
+               //     })
+               // })
+                console.log(result);
+            }
+            else if (result.status == 100) {
+                notify(result.message, 'top', 'left', '', 'danger', '', '');
+                $.each(result.errors, function (i, error) {
+                    $.each(error.errors, function (j, item) {
+                        $('#allError').append(createErrorElement(item.errooMessage))
+                    })
+                })
+                console.log(result);
+            }
+            else {
+                console.log(result);
+            }
+
+        },
+        error: function (result) {
+            console.log(result)
+        },
+
+    });
+})
+
+
+//--------------------check username validation---------------------------
 //function checkUserName() {
 //    var data = $('#UserName').val();
 //    $.ajax({

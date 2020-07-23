@@ -1,0 +1,8 @@
+﻿
+code					description	
+
+100						model state not valid
+200						success
+400						notfound
+500						server error
+501						logical error

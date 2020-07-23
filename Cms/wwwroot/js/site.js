@@ -1,4 +1,7 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿//////////////////crate span element for show errors ////////////////////////
+function createErrorElement(value) {
+    var $span = $(document.createElement('span'));
+    $span.addClass('text-danger').html(value);
+    //    $span.add('id', 'allError');
+    return $span;
+}

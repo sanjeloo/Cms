@@ -50,12 +50,18 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
 
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateUser(CreateUserViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return Json(new
+                {
+                    status = 100, //you can see the datails of status code in ~/Global/statusCodes
+                    errors = ModelState.Values.Where(e => e.Errors.Count > 0).ToList(),
+                    message = "لطفا در وارد کردن اطلاعات دقت کنید"
+                });
             }
             var user = new Users
             {
@@ -68,25 +74,36 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
             //todo sms verification
             var result = await userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
-                return RedirectToAction("Index");
+                return new JsonResult(new
+                {
+                    status = 200, //you can see the datails of status code in Global/statusCode 
+                    error = 0,
+                    message = "کاربر با موفقیت اضافه شد"
+
+                });
 
             else
                 foreach (var item in result.Errors)
                 {
                     ModelState.AddModelError("", item.Description);
                 }
-            return View(model);
+            return new JsonResult(new
+            {
+                status = 501, //you can see the datails of status code in ~/Global/statusCodes
+                errors = ModelState.Values.Where(e => e.Errors.Count > 0).ToList(),
+                message = "هنگام افزودن کاربر مشکلی رخ داد لطفا بعدا تلاش کنید"
+            });
 
         }
 
         [HttpPost]
-        public async Task<IActionResult> CheckUserName(string username)
+        public async Task<IActionResult> CheckUserName(string UserName)
         {
-            if (!(await userManager.FindByNameAsync(username) != null))
+            if ((await userManager.FindByNameAsync(UserName) != null))
                 return Json($"این نام کاربری قبلا در سیستم ثبت شده");
 
-            return Json(false);
-           
+            return Json(true);
+
         }
 
         [HttpPost]
@@ -132,7 +149,7 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
                 user.LastName = model.LastName;
                 user.Gender = model.Gender;
 
-               var result = await userManager.UpdateAsync(user);
+                var result = await userManager.UpdateAsync(user);
                 if (!result.Succeeded)
                 {
                     foreach (var item in result.Errors)
@@ -159,5 +176,9 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
 
 
         }
+    }
+
+    internal class allowhtmlAttribute : Attribute
+    {
     }
 }

@@ -41,6 +41,7 @@ namespace Cms
             })
             .AddEntityFrameworkStores<ApplicationContext>();
             //.AddDefaultTokenProviders();
+            //services.AddMvc();
             services.AddMvc(o =>
             {
                 var policy = new AuthorizationPolicyBuilder()

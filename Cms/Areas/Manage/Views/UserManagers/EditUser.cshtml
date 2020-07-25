@@ -3,7 +3,7 @@
 <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <form asp-action="EditUser">
+            <form method="post" id="frmEditUser">
                 <div class="modal-header">
                     <h4 class="modal-title">ویرایش کاربر</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -66,8 +66,8 @@
 
                 @*<label class="col-sm-2"></label>*@
                 <div class="col-sm-10">
-                    <button type="submit"  style="margin:5%" class="btn btn-primary m-b-0">ذخیره</button>
-                    <button type="button" data-dismiss="modal" style="margin:5%" class="btn btn-default m-b-0">کنسل</button>
+                    <button id="btnEdit" type="button" style="margin:5%" class="btn btn-primary m-b-0">ذخیره</button>
+                    <button type="button" data-dismiss="modal" style="margin:5%" class="btn btn-default m-b-0">برگشت</button>
                 </div>
 
                 @*<button type="button" onclick="dismismodal()" class="btn btn-default waves-effect " data-dismiss="modal">Close</button>
@@ -77,3 +77,61 @@
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+    <script>
+        $('#btnEdit').click(function (event) {
+            debugger;
+            event.preventDefault();
+            if (!$('#frmEditUser').valid()) {
+                return false;
+            }
+            $('#frmEditUser').on('submit', function () {
+                $('#frmEditUser').preventDefault();
+            })
+
+            var model = $('#frmEditUser').serializeArray();
+            $.ajax({
+                url: '/Manage/UserManagers/EditUser',
+                type: 'post',
+                data: model,
+                success: function (result) {
+                    debugger;
+                    if (result.status == 200) {
+                        notify(result.message, 'top', 'left', '', 'success', '', '');
+                        $('#large-Modal').modal('hide');
+                        // $('#frmEditUser').trigger('reset');
+
+                    }
+                    else if (result.status == 600) {
+                        notify(result.message, 'top', 'left', '', 'danger', '', '');
+                        //$.each(result.errors, function (i, error) {
+                        //    $.each(error.errors, function (j, item) {
+                        //         $('#allError').append(createErrorElement(item.errooMessage))
+                        //     })
+                        // })
+                        console.log(result);
+                    }
+                    else if (result.status == 100) {
+                        notify(result.message, 'top', 'left', '', 'danger', '', '');
+                        console.log(result);
+                    }
+                    else if (result.status == 404) {
+                        notify(result.message, 'top', 'left', '', 'danger', '', '');
+                        console.log(result);
+                    }
+                    else {
+                        console.log(result);
+                    }
+
+                },
+                error: function (result) {
+                    console.log(result)
+                },
+
+            });
+        })
+
+    </script>
+}

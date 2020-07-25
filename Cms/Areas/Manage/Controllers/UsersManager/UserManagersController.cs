@@ -83,17 +83,18 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
                 });
 
             else
+            {
                 foreach (var item in result.Errors)
                 {
                     ModelState.AddModelError("", item.Description);
                 }
-            return new JsonResult(new
-            {
-                status = 501, //you can see the datails of status code in ~/Global/statusCodes
-                errors = ModelState.Values.Where(e => e.Errors.Count > 0).ToList(),
-                message = "هنگام افزودن کاربر مشکلی رخ داد لطفا بعدا تلاش کنید"
-            });
-
+                return new JsonResult(new
+                {
+                    status = 600, //you can see the datails of status code in ~/Global/statusCodes
+                    errors = ModelState.Values.Where(e => e.Errors.Count > 0).ToList(),
+                    message = "هنگام افزودن کاربر مشکلی رخ داد لطفا بعدا تلاش کنید"
+                });
+            }
         }
 
         [HttpPost]
@@ -133,11 +134,18 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
             }
 
         }
+
+        [HttpPost]
         public async Task<IActionResult> EditUser(EditUserViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return Json(new
+                {
+                    status = 100, //you can see the datails of status code in ~/Global/statusCodes
+                    errors = ModelState.Values.Where(e => e.Errors.Count > 0).ToList(),
+                    message = "لطفا در وارد کردن اطلاعات دقت کنید"
+                });
             }
 
             var user = await userManager.FindByNameAsync(model.UserName);
@@ -158,19 +166,24 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
                     }
                     return new JsonResult(new
                     {
-                        Status = 600
-
+                        status = 600, //you can see the datails of status code in ~/Global/statusCodes
+                        errors = ModelState.Values.Where(e => e.Errors.Count > 0).ToList(),
+                        message = "هنگام ویرایش کاربر مشکلی رخ داد لطفا بعدا تلاش کنید"
                     });
                 }
                 return new JsonResult(new
                 {
-                    Status = 200
+                    status = 200, //you can see the datails of status code in Global/statusCode 
+                    error = 0,
+                    message = "کاربر با موفقیت ویرایش شد"
 
                 });
             }
             return new JsonResult(new
             {
-                Status = 404
+                status = 404, //you can see the datails of status code in ~/Global/statusCodes
+                errors = 0,
+                message = "کاربر مورد نظر پیدا نشد"
 
             });
 

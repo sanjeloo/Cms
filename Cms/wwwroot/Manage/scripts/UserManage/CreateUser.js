@@ -20,8 +20,9 @@ $('#btnCreate').click(function (event) {
             debugger;
             if (result.status == 200) {
                 notify(result.message, 'top', 'left', '', 'success', '', '');
+                $('#frmCreateUser').trigger('reset');
             }
-            else if (result.status == 501) {
+            else if (result.status == 600) {
                 notify(result.message, 'top', 'left', '', 'danger', '', '');
                //$.each(result.errors, function (i, error) {
                //    $.each(error.errors, function (j, item) {
@@ -32,11 +33,6 @@ $('#btnCreate').click(function (event) {
             }
             else if (result.status == 100) {
                 notify(result.message, 'top', 'left', '', 'danger', '', '');
-                $.each(result.errors, function (i, error) {
-                    $.each(error.errors, function (j, item) {
-                        $('#allError').append(createErrorElement(item.errooMessage))
-                    })
-                })
                 console.log(result);
             }
             else {

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+﻿$(document).ready(function(){
 
 	//Example 2
 	$("#filer_input2").filer({
@@ -135,8 +135,8 @@ $(document).ready(function(){
 			}
 		},
 		captions: {
-			button: "Choose Files",
-			feedback: "Choose files To Upload",
+			button: "Choose ",
+			feedback: "Choose files ",
 			feedback2: "files were chosen",
 			drop: "Drop file here to Upload",
 			removeConfirmation: "Are you sure you want to remove this file?",

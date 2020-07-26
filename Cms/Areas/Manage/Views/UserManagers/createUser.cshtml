@@ -44,7 +44,7 @@
                          
                         </div>
                         <div class="card-block">
-                            <form id="frmCreateUser" method="post">
+                            <form id="frmCreateUser" enctype="multipart/form-data"  method="post">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">نام</label>
@@ -80,7 +80,23 @@
                                         <input class="form-control" asp-for="RepeatPassword">
                                         <span class="text-danger" asp-validation-for="RepeatPassword"></span>
                                     </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">  آپلود تصویر</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" name="files[]" id="filer_input" multiple="multiple">
+
+                                    </div>
                                 </div>
+                                @*<div class="card">
+                                    <div class="card-header">
+                                        آپلود تصویر
+                                      
+                                    </div>
+                                    <div class="card-block">
+                                        <input type="file" name="files[]" id="filer_input" multiple="multiple">
+                                    </div>
+                                </div>*@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">موبایل</label>
                                     <div class="col-sm-10">

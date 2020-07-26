@@ -11,10 +11,10 @@ $('#btnCreate').click(function (event) {
         $('#frmCreateUser').preventDefault();
     })
    
-    var model = $('#frmCreateUser').serializeArray();
+    var model = new FormData($('#frmCreateUser')[5]);
     $.ajax({
         url: '/Manage/UserManagers/CreateUser',
-        type: 'post',
+        method: 'post',
         data:  model ,
         success: function (result) {
             debugger;

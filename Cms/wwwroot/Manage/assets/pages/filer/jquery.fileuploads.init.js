@@ -1,4 +1,4 @@
-
+﻿
 /**
 * Theme: Codefox Admin Template
 * Author: Coderthemes
@@ -20,8 +20,8 @@ $(document).ready(function(){
 
     //Example 2
     $('#filer_input').filer({
-        limit: 3,
-        maxSize: 3,
+        limit: 1,
+        maxSize: 1,
         extensions: ['jpg', 'jpeg', 'png', 'gif', 'psd'],
         changeInput: true,
         showThumbs: true,
@@ -149,16 +149,16 @@ $(document).ready(function(){
         onEmpty: null,
         options: null,
         captions: {
-            button: "Choose Files",
-            feedback: "Choose files To Upload",
+            button: "Choose ",
+            feedback: "Choose files",
             feedback2: "files were chosen",
             drop: "Drop file here to Upload",
-            removeConfirmation: "Are you sure you want to remove this file?",
+            removeConfirmation: "آیا از حذف این فایل اطمینان دارید",
             errors: {
-                filesLimit: "Only {{fi-limit}} files are allowed to be uploaded.",
-                filesType: "Only Images are allowed to be uploaded.",
-                filesSize: "{{fi-name}} is too large! Please upload file up to {{fi-maxSize}} MB.",
-                filesSizeAll: "Files you've choosed are too large! Please upload files up to {{fi-maxSize}} MB."
+                filesLimit: "فقط {{fi-limit}} مجاز است.",
+                filesType: "فقط فرمت تصویر مجاز است.",
+                filesSize: "{{fi-name}} سایز فایل بیش از حد !! حداکثر سایز مجاز {{fi-maxSize}} MB.",
+                filesSizeAll: "سایز فایل بیش از حد !! حداکثر سایز مجاز {{fi-maxSize}} MB."
             }
         }
     });

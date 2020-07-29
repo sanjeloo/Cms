@@ -48,34 +48,44 @@ $('#btnCreate').click(function (event) {
 })
 
 
-//--------------------check username validation---------------------------
-//function checkUserName() {
-//    var data = $('#UserName').val();
-//    $.ajax({
-//        url: '/Manage/UserManagers/CheckUserName',
-//        type: 'post',
-//        data: { username: data },
-//        success:
-//            function (result) {
-//                //debugger;
-//                if (result == true) {
-//                    var $span = $(document.createElement('span'));
-//                    $span.addClass('text-danger').html('نام کاربری قبلا در سیستم وجود دارد');
-//                    $span.add('id', 'UserName-error');
-//                    $('*[data-valmsg-for="UserName"]').append($span);
-//                   // $('<span id="UserName-error" />').addClass('text_danger').html('نام کاربری در سیستم وجود دارد'))
-//                    //$('#UserName-error').val("نام کاربری در سیستم وجود دارد")
-//                }
-//                else {
-//                    $('#UserName-error').html("")
-//                }
+/////////////////////////// updod image //////////////////////////
+function uploadImage () {
+    debugger;
 
-//            },
-//        error: function (result) {
-//            console.log(result)
-//        },
+    var fd = new FormData();
+    var files = $('#filer_input')[0].files[0];
+    fd.append('file', files); 
 
-//    });
-//}
+    $.ajax({
+        url: '/Manage/Uploader/Image',
+        method: 'Post',
+        data: files,
+        contentType: false,
+        processData: false, 
+        success: function (result) {
+            debugger;
+            if (result.status == 200) {
+                notify(result.message, 'top', 'left', '', 'success', '', '');
+                $('#uploadPhoto').hide();
+            }
+            else if (result.status == 500) {
+                notify(result.message, 'top', 'left', '', 'danger', '', '');
+                console.log(result);
+            }
+            else if (result.status == 400) {
+                notify(result.message, 'top', 'left', '', 'danger', '', '');
+                console.log(result);
+            }
+            else {
+                console.log(result);
+            }
+        },
+        error: function (result) {
+
+        }
+    })
+}
+
+
 
 

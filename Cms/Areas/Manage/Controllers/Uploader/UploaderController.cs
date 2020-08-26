@@ -12,7 +12,7 @@ namespace Cms.Areas.Manage.Controllers.Uploader
     public class UploaderController : Controller
     {
         [HttpPost]
-        public async Task<IActionResult> Image([FromForm] IFormFile files)
+        public async Task<IActionResult> Image(IFormCollection  files)
         {
             if (Request.Form.Files.Count > 0)
             {
@@ -23,7 +23,7 @@ namespace Cms.Areas.Manage.Controllers.Uploader
                     try
                     {
                         var extension = Path.GetExtension(file.FileName);
-                        var fileName = new Guid() + extension;
+                        var fileName = Guid.NewGuid() + extension;
                         // var path = Path.Combine( Server.MapPath("~/Images/"), fileName);
                         // file.SaveAs(path);
                         var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Images", fileName);

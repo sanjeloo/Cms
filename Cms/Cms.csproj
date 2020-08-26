@@ -92,7 +92,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Manage\Data\" />
-    <Folder Include="wwwroot\js\NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>

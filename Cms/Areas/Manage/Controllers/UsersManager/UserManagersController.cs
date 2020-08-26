@@ -69,7 +69,9 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
                 UserName = model.UserName,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
+                Photo = model.Photo,
                 Gender = model.Gender
+                
             };
             //todo sms verification
             var result = await userManager.CreateAsync(user, model.Password);
@@ -120,8 +122,10 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
                        user.UserName,
                        user.FirstName,
                        user.LastName,
+                       user.Photo,
                        user.PhoneNumber,
                        user.Gender
+
                    });
             }
             else

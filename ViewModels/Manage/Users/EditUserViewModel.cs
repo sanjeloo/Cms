@@ -20,5 +20,6 @@ namespace ViewModels.Manage.Users
         public string PhoneNumber { get; set; }
        
         public int Gender { get; set; }
+        public string Photo { get; set; }
     }
 }

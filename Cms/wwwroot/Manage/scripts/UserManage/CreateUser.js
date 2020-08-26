@@ -10,8 +10,8 @@ $('#btnCreate').click(function (event) {
     $('#frmCreateUser').on('submit', function () {
         $('#frmCreateUser').preventDefault();
     })
-   
-    var model = new FormData($('#frmCreateUser')[5]);
+
+    var model = $('#frmCreateUser').serialize();
     $.ajax({
         url: '/Manage/UserManagers/CreateUser',
         method: 'post',
@@ -52,14 +52,15 @@ $('#btnCreate').click(function (event) {
 function uploadImage () {
     debugger;
 
-    var fd = new FormData();
-    var files = $('#filer_input')[0].files[0];
-    fd.append('file', files); 
-
+    var files = new FormData();
+    $.each($('#filer_input')[0].files, function (i, file) {
+        files.append('file-' + i, file);
+    });
     $.ajax({
         url: '/Manage/Uploader/Image',
-        method: 'Post',
+        method: 'POST',
         data: files,
+        cache: false,
         contentType: false,
         processData: false, 
         success: function (result) {
@@ -67,6 +68,7 @@ function uploadImage () {
             if (result.status == 200) {
                 notify(result.message, 'top', 'left', '', 'success', '', '');
                 $('#uploadPhoto').hide();
+                $('#Photo').val(result.name);
             }
             else if (result.status == 500) {
                 notify(result.message, 'top', 'left', '', 'danger', '', '');

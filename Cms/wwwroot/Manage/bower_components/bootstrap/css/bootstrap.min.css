@@ -226,8 +226,10 @@ figure {
 
 img {
     vertical-align: middle;
+    max-width: 150px;
     border-style: none
 }
+
 
 svg:not(:root) {
     overflow: hidden

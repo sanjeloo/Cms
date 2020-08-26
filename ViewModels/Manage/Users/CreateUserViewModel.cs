@@ -35,5 +35,6 @@ namespace ViewModels.Manage.Users
         [Compare("Password", ErrorMessage = "کلمه عبور و تکرار آن مشابه هم نیستند")]
         public string RepeatPassword { get; set; }
         public int Gender { get; set; }
+        public string Photo { get; set; }
     }
 }

@@ -56,19 +56,19 @@ namespace Entities.Entities.Articles
         public int Score { get; set; }
 
 
-        [ForeignKey("ArticleCategoryId")]
-        public virtual ArticleCategory ArticleCategory { get; set; }
+        //[ForeignKey("ArticleCategoryId")]
+        //public virtual ArticleCategory ArticleCategory { get; set; }
 
-        public int? ArticleCategoryId { get; set; }
+        //public int? ArticleCategoryId { get; set; }
 
-        public virtual ICollection<ArticleComments> ArticleCommentses { get; set; }
-        public virtual ICollection<ArticleScore> ArticleScores { get; set; }
+        //public virtual ICollection<ArticleComments> ArticleCommentses { get; set; }
+        //public virtual ICollection<ArticleScore> ArticleScores { get; set; }
 
         //[ForeignKey("LanguageId")]
         //public virtual Language Language { get; set; }
         //public int LanguageId { get; set; }
 
-        public string CategoryName { get; set; }
+        //public string CategoryName { get; set; }
         public bool IsDelete { get; set; }
     }
 }

@@ -11,52 +11,61 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="card-block">
+                    <div class="row">
 
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">نام</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" asp-for="FirstName">
-                                <span class="text-danger" asp-validation-for="FirstName"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">نام خانوادگی</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" asp-for="LastName">
-                                <span class="text-danger" asp-validation-for="LastName"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">نام کاربری</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" asp-for="UserName">
-                                <span class="text-danger" asp-validation-for="UserName"></span>
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">موبایل</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" asp-for="PhoneNumber">
-                                <span class="text-danger" asp-validation-for="PhoneNumber"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-sm-2 col-form-label">جنسیت</label>
-                            <div class="col-sm-10">
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" checked="checked" name="gender" id="gender-1" value="1"> پسر
-                                    </label>
+                        <div class="col-sm-6">
+
+
+                            <div class="card-block">
+
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">نام</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" asp-for="FirstName">
+                                        <span class="text-danger" asp-validation-for="FirstName"></span>
+                                    </div>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="gender" id="gender-2" value="0"> دختر
-                                    </label>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">نام خانوادگی</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" asp-for="LastName">
+                                        <span class="text-danger" asp-validation-for="LastName"></span>
+                                    </div>
                                 </div>
-                                <span class="text-danger"></span>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">نام کاربری</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" asp-for="UserName">
+                                        <span class="text-danger" asp-validation-for="UserName"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">موبایل</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" asp-for="PhoneNumber">
+                                        <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-4 col-form-label">جنسیت</label>
+                                    <div class="col-sm-8">
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" checked="checked" name="gender" id="gender-1" value="1"> پسر
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="gender" id="gender-2" value="0"> دختر
+                                            </label>
+                                        </div>
+                                        <span class="text-danger"></span>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -66,21 +75,23 @@
                         <!-- Hidden overlay card start -->
                         <div class="card">
                             <div class="card-header">
-                                <h5>Hidden Overlay</h5>
+                                <h5>ویرایش تصویر</h5>
 
                             </div>
                             <div class="card-block">
                                 <div class="panel panel-flat">
 
                                     <div class="panel-body">
-                                        @*<p class="content-group">
-                                                This example demonstrates default options, but with hidden black modal layer above the cropper. To hide the modal set <code>modal</code> option to <code>false</code>. If visible, modal color
-                                                can be easily changed in css.
-                                            </p>*@
+                                        <p class="content-group">
+                                            از طریق ابزار عکس را ویرایش کنید
+                                        </p>
                                         <div class="image-cropper-container">
-                                            <img  src="" alt="" class="crop-modal img-fluid">
+                                            <img id="photo" src="" alt="" class="crop-modal img-fluid">
                                         </div>
                                     </div>
+                                    <button type="button" class="btn btn-primary" >
+                                      
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -96,9 +107,10 @@
                 </div>
 
                 @*<button type="button" onclick="dismismodal()" class="btn btn-default waves-effect " data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary waves-effect waves-light ">Save changes</button>*@
+            <button type="button" class="btn btn-primary waves-effect waves-light ">Save changes</button>*@
 
             </form>
+    
         </div>
     </div>
 </div>

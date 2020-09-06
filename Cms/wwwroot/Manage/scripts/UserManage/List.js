@@ -30,6 +30,8 @@ function deleteuser(el) {
 
     });
 }
+
+//////////////////////////////// get user data and fill the ui element ////////////////////////////////////////////
 function edituser(username) {
     debugger;
     $('#loading').removeClass('hide')
@@ -47,13 +49,17 @@ function edituser(username) {
                     $('#FirstName').val(result.firstName)
                     $('#LastName').val(result.lastName)
                     $('#PhoneNumber').val(result.phoneNumber)
-                    $('.img-fluid').attr("src", "/images/" + result.photo);
+                    $('#photo').attr("src", "/images/" + result.photo);
                     if (result.gender == 1)
                         $('#gender-1').val(result.gender).add('checked')
                     else
                         $('#gender-2').val(result.gender).add('checked')
 
                     $('#large-Modal').modal('show');
+
+                   
+                    croper_reloadjs();
+                 
                     $('#loading').addClass('hide')
 
                 }
@@ -68,7 +74,7 @@ function edituser(username) {
     });
 }
 
-
+////////////////////////////////////////////// edit user  //////////////////////////////////////
 $('#btnEdit').click(function (event) {
     debugger;
     event.preventDefault();
@@ -121,3 +127,15 @@ $('#btnEdit').click(function (event) {
     });
 })
 
+
+/////////////////////// reload cope js for the image ////////////////////////////////
+function croper_reloadjs() {
+    $('#croper_js1').remove();
+    $.getScript("/Manage/bower_components/cropper/js/cropper.min.js", function () {
+        $('script:last').attr('id', 'Croper_js1');
+    });
+    $('#croper_js2').remove();
+    $.getScript("/Manage/assets/pages/cropper/croper.js", function () {
+        $('script:last').attr('id', 'croper_js2');
+    });
+}

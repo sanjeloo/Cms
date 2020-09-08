@@ -1,4 +1,5 @@
-﻿using Entities.Entities.Articles;
+﻿using DAL;
+using Entities.Entities.Articles;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,16 @@ namespace Cms.Areas.Manage.Controllers.Articles
     [Area("Manage")]
     public class ArticlesController: Controller
     {
+        private readonly ApplicationContext db;
+
+        public ArticlesController(ApplicationContext db)
+        {
+            this.db = db;
+        }
         public IActionResult List()
         {
-            return View();
+           
+            return View(db.Articles.OrderByDescending(c=>c.Id).Where(c=>c.IsDelete != true).ToList());
         } 
         public IActionResult Update()
         {

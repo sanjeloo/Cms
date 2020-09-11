@@ -226,7 +226,7 @@ figure {
 
 img {
     vertical-align: middle;
-    max-width:110px;
+    max-width: 110px !important;
     border-style: none
 }
 

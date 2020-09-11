@@ -1,5 +1,5 @@
   'use strict';
- $(document).ready(function() {
+$(document).ready(function () {
         $('#e-product-list').DataTable({
             "paging":   true,
             "ordering": false,
@@ -22,4 +22,8 @@
 				$('.stock').val('');
 				$('.pamount').val('');
 			});
-    } );
+ });
+
+function showDeleteModal() {
+	$('#deleteModal').modal('show');
+}

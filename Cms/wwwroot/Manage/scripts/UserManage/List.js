@@ -1,16 +1,16 @@
 ﻿
 function dismismodal() {
     $('#loading').addClass('hide')
-    debugger
+    
 }
 function showmodal() {
-    debugger
+
 
     $('#large-Modal').modal('show');
     $('#loading').removeClass('hide')
 }
 function deleteuser(el) {
-    debugger;
+    
 
     $.ajax({
         url: '/Manage/UserManagers/Delete',
@@ -18,7 +18,7 @@ function deleteuser(el) {
         data: { username: el },
         success:
             function (result) {
-                debugger;
+                
                 if (result == true) {
                     $('#' + el + '').fadeOut('slow');
                 }

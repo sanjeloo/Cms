@@ -7,15 +7,15 @@ $(document).ready(function () {
             "info":     false,
             "searching": false
         });
-        $(".save_btn").on("click", function() {
+   //     $(".save_btn").on("click", function() {
 				
-				$('.pname').val('');
-				$('.jFiler-items').css('display','none');
-				$('.stock').val('');
-				$('.pamount').val('');
-				$("#modal-13").modal('hide');
+			//	$('.pname').val('');
+			//	$('.jFiler-items').css('display','none');
+			//	$('.stock').val('');
+			//	$('.pamount').val('');
+			//	$("#modal-13").modal('hide');
 	
-			});
+			//});
         $(".close_btn").on("click", function() {
 				$('.pname').val('');
 				$('.jFiler-items').css('display','none');
@@ -24,6 +24,7 @@ $(document).ready(function () {
 			});
  });
 
-function showDeleteModal() {
+function showDeleteModal(id) {
+	globalIdVariable = id;
 	$('#deleteModal').modal('show');
 }

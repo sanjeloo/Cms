@@ -71,7 +71,7 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
                 LastName = model.LastName,
                 Photo = model.Photo,
                 Gender = model.Gender
-                
+
             };
             //todo sms verification
             var result = await userManager.CreateAsync(user, model.Password);
@@ -168,14 +168,14 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
                     {
                         ModelState.AddModelError("", item.Description);
                     }
-                    return new JsonResult(new
+                    return Json(new
                     {
                         status = 600, //you can see the datails of status code in ~/Global/statusCodes
                         errors = ModelState.Values.Where(e => e.Errors.Count > 0).ToList(),
                         message = "هنگام ویرایش کاربر مشکلی رخ داد لطفا بعدا تلاش کنید"
                     });
                 }
-                return new JsonResult(new
+                return Json(new
                 {
                     status = 200, //you can see the datails of status code in Global/statusCode 
                     error = 0,
@@ -183,7 +183,7 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
 
                 });
             }
-            return new JsonResult(new
+            return Json(new
             {
                 status = 404, //you can see the datails of status code in ~/Global/statusCodes
                 errors = 0,

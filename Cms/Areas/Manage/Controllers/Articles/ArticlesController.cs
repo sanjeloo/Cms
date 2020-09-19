@@ -1,10 +1,12 @@
 ﻿using DAL;
 using Entities.Entities.Articles;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ViewModels.Manage.Articles;
 
 namespace Cms.Areas.Manage.Controllers.Articles
 {
@@ -94,9 +96,53 @@ namespace Cms.Areas.Manage.Controllers.Articles
             return View();
         }
         [HttpPost]
-        public IActionResult Insert(Article model)
+        public async Task<IActionResult> Insert(CreateArticleViewModel model)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return Json(new
+                {
+                    status = 100, //you can see the datails of status code in ~/Global/statusCodes
+                    errors = ModelState.Values.Where(e => e.Errors.Count > 0).ToList(),
+                    message = "لطفا در وارد کردن اطلاعات دقت کنید"
+                });
+            }
+            var article = new Article
+            {
+                Title = model.Title,
+                Abstract = model.Abstract,
+                Description = model.Description,
+                Photo = model.Photo,
+                IsDelete = false,
+                CreationDate = DateTime.Now
+
+            };
+            //todo sms verification
+            try
+            {
+
+                await db.Articles.AddAsync(article);
+                var result = await db.SaveChangesAsync();
+                    return new JsonResult(new
+                    {
+                        status = 200, //you can see the datails of status code in Global/statusCode 
+                        error = 0,
+                        message = "مقاله با موفقیت اضافه شد"
+
+                    });
+            }
+            catch (Exception e)
+            {
+
+                ModelState.AddModelError("", e.Message);
+                return new JsonResult(new
+                {
+                    status = 600, //you can see the datails of status code in ~/Global/statusCodes
+                    errors = ModelState.Values.Where(e => e.Errors.Count > 0).ToList(),
+                    message = "هنگام افزودن مقاله مشکلی رخ داد لطفا بعدا تلاش کنید"
+                });
+            }
+
         }
         [HttpPost]
         public async Task<IActionResult> Delete(int id)

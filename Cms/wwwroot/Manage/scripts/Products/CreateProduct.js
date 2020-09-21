@@ -3,7 +3,7 @@
 ///////////////////// add user //////////////////
 $('#btnCreate').click(function (event) {
     debugger;
-    $('#loading').removeClass('hide')
+   
     event.preventDefault();
     if (!$('#frmCreateProduct').valid()) {
         return false;
@@ -13,6 +13,7 @@ $('#btnCreate').click(function (event) {
     })
 
     var model = $('#frmCreateProduct').serialize();
+    $('#loading').removeClass('hide')
     $.ajax({
         url: '/Manage/Products/Insert',
         method: 'post',

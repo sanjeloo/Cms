@@ -39,8 +39,8 @@ function EditProduct(id) {
         debugger;
         if (result.status == 200) {
           $.validator.unobtrusive.parse("#frmEditProduct");
-          $('#Title').val(result.title)
-          $('#Abstract').val(result.abstract)
+          $('#Name').val(result.name)
+          $('#Price').val(result.price)
           $('#Description').val(result.description)
          // $('#photo').attr("src", "/images/" + result.photo);
           $('#Id').val(result.id)

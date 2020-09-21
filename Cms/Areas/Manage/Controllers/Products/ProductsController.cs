@@ -9,6 +9,7 @@ using ViewModels.Manage.Products;
 
 namespace Cms.Areas.Manage.Controllers.Products
 {
+    [Area("Manage")]
     public class ProductsController:Controller
     {
         private readonly ApplicationContext db;

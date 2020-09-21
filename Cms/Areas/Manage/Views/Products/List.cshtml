@@ -1,12 +1,12 @@
-﻿@model IEnumerable<Article>
+﻿@model IEnumerable<Product>
 <div class="page-body">
     <div class="row">
         <div class="col-sm-12">
             <!-- Product list card start -->
             <div class="card">
                 <div class="card-header">
-                    <h5>لیست مقالات</h5>
-                    <button style="display:block" type="button" id="showModal" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" data-modal="modal-13">
+                    <h5>لیست محصولات</h5>
+                    <button style="display:none !important" type="button" id="showModal" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" data-modal="modal-13">
                         <i class="icofont icofont-plus m-r-5"></i> Add Product
                     </button>
                 </div>
@@ -18,8 +18,8 @@
                                     <thead>
                                         <tr>
                                             <th>تصویر</th>
-                                            <th>عنوان</th>
-                                            <th>خلاصه</th>
+                                            <th>نام</th>
+                                            <th>قیمت</th>
                                             @* <th>Stock</th>*@
 
                                         </tr>
@@ -33,12 +33,12 @@
                                                     <img src="\images\@pd.Photo" class="img-fluid" alt="tbl">
                                                 </td>
                                                 <td class="pro-name">
-                                                    <h6>@pd.Title</h6>
+                                                    <h6>@pd.Name</h6>
                                                     <span>@Html.Raw(pd.Description)</span>
                                                 </td>
                                                 @*<td>$456</td>*@
                                                 <td>
-                                                    <label class="text-danger">@pd.Abstract</label>
+                                                    <label class="text-danger">@pd.Price.ToString("N2")</label>
                                                 </td>
                                                 <td class="action-icon">
                                                     <button onclick="EditProduct(@pd.Id)" class="m-r-15 text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="icofont icofont-ui-edit"></i></button>
@@ -70,11 +70,11 @@
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                    <input id="Title" name="Title" type="text" class="form-control pname" placeholder="عنوان">
+                    <input id="Name" name="Name" type="text" class="form-control pname" placeholder="نام">
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                    <input id="Abstract" name="Abstract" type="text" class="form-control pamount" placeholder="توضیحات خلاصه">
+                    <input id="Price" name="Price" type="text" class="form-control pamount" placeholder="قیمت">
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
@@ -119,5 +119,5 @@
 @section Scripts
 {
 
-    <script src="~/Manage/scripts/Articles/ArticlesList.js"></script>
+    <script src="~/Manage/scripts/Products/ProductsList.js"></script>
 }

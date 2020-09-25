@@ -57,6 +57,10 @@ namespace Cms.Controllers
             await signInManager.SignOutAsync();
             return Redirect("/");
         }
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
 
     }
 }

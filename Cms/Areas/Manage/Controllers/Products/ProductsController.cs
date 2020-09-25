@@ -1,5 +1,6 @@
 ﻿using DAL;
 using Entities.Entities.Products;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using ViewModels.Manage.Products;
 
 namespace Cms.Areas.Manage.Controllers.Products
 {
+    [Authorize(Roles = "admin,employe")]
     [Area("Manage")]
     public class ProductsController:Controller
     {

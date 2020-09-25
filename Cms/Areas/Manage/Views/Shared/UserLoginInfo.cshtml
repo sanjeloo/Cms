@@ -10,7 +10,7 @@
             <i class="feather icon-chevron-down"></i>
         </div>
         <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-            <li>
+            @*<li>
                 <a href="#!">
                     <i class="feather icon-settings"></i> تنظیمات
                 </a>
@@ -29,9 +29,9 @@
                 <a href="auth-lock-screen.htm">
                     <i class="feather icon-lock"></i> قفل صفحه
                 </a>
-            </li>
+            </li>*@
             <li>
-                <a href="auth-normal-sign-in.htm">
+                <a asp-area="" asp-controller="Account" asp-action="LogOut">
                     <i class="feather icon-log-out"></i> خروج
                 </a>
             </li>

@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using DAL;
 using Entities.Entities.UserAndSecurity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ViewModels.Manage.Users;
 
 namespace Cms.Areas.Manage.Controllers.UsersManager
 {
+    [Authorize(Roles = "admin")]
     [Area("Manage")]
     public class UserManagersController : Controller
     {

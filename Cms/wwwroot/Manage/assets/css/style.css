@@ -9324,13 +9324,16 @@ p {
     padding: 1.25rem;
     direction: rtl;
 }
-
+.force-rtl{
+    direction:rtl !important;
+}
 .card {
     border-radius: 5px;
     -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
     box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
     border: none;
-    margin-bottom: 30px
+    direction: rtl !important;
+    margin-top: 5px;
 }
 
     .card .card-footer {
@@ -9339,12 +9342,12 @@ p {
     }
 
     .card .card-header {
-        background-color: transparent;
+        background-color: #404e67;
         border-bottom: none;
         padding: 25px 20px;
         direction: rtl;
+        color: white;
     }
-
         .card .card-header .card-header-left {
             display: inline-block
         }

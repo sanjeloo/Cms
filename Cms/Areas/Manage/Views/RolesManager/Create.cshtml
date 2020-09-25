@@ -1,0 +1,29 @@
+﻿@model CreateRoleViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h3 class="force-rtl" >ایجاد نقش جدید</h3>
+
+<hr />
+<div class="row force-rtl">
+    <div class="col-md-4 force-rtl ">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group force-rtl">
+                <label asp-for="RoleName" class="control-label"></label>
+                <input asp-for="RoleName" class="form-control" />
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            <div class="form-group force-rtl">
+                <input type="submit" value="ایجاد" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="force-rtl">
+    <a class="btn btn-primary" asp-action="RolesList">برگشت به لیست نقش ها</a>
+</div>
+

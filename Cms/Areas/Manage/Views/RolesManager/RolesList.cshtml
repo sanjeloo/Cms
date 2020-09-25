@@ -1,0 +1,49 @@
+﻿@model IEnumerable<IdentityRole>
+
+@{
+
+    ViewData["Title"] = "RolesList";
+}
+
+<h3 style="font:bold;direction:rtl">لیست نقش ها</h3>
+<a asp-action="Create" class="btn btn-primary">افزودن نقش جدید</a>
+<br />
+@if (Model.Any())
+{
+    foreach (var role in Model)
+    {
+        <div class="card mb-3 ">
+
+            <div class="card-header "> شناسه: @role.Id</div>
+            <div class="card-body ltr">@role.Name</div>
+            <div class="card-footer ltr">
+
+                @*@if ((await authorizationservice.AuthorizeAsync(User, "DeleteRolePolicy")).Succeeded)
+                {*@
+
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-Id="@role.Id">حذف نقش</a>
+              @*}*@
+                @*@if ((await authorizationservice.AuthorizeAsync(User, "EditRolePolicy")).Succeeded)
+                {*@
+                    <a asp-action="Edit" class="btn btn-primary" asp-route-Id="@role.Id">ویرایش نقش</a>
+               @* 
+                   
+                }
+               *@
+            </div>
+        </div>
+    }
+
+}
+else
+{
+    <div class="card mb-3">
+
+        <div class="card-header">نقش ها</div>
+        <div class="card-body"><h4>هیچ نقشی وجود ندارد</h4></div>
+        <div class="card-footer">
+            <a asp-action="Create" class="btn btn-primary">ایجاد نقش</a>
+        </div>
+    </div>
+}
+

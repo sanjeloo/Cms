@@ -130,7 +130,7 @@
                             </li>
                         </ul>
                         <ul class="nav-right">
-                            <li class="header-notification">
+                            @*<li class="header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="feather icon-bell"></i>
@@ -145,7 +145,7 @@
                                             <div class="media">
                                                 <img class="d-flex align-self-center img-radius" src="\Manage\assets\images\avatar-4.jpg" alt="Generic placeholder image">
                                                 <div class="media-body">
-                                                    <h5 class="notification-user">حمیدرضا بیگلری</h5>
+                                                    <h5 class="notification-user">امین رحمتی</h5>
                                                     <p class="notification-msg">متن ساختگی جهت تست این قسمت.</p>
                                                     <span class="notification-time">30 دقیقه پیش.</span>
                                                 </div>
@@ -165,7 +165,7 @@
                                             <div class="media">
                                                 <img class="d-flex align-self-center img-radius" src="\Manage\assets\images\avatar-4.jpg" alt="Generic placeholder image">
                                                 <div class="media-body">
-                                                    <h5 class="notification-user">محمدرضا رزقی</h5>
+                                                    <h5 class="notification-user">امین رحمتی</h5>
                                                     <p class="notification-msg">متن ساختگی جهت تست این قسمت.</p>
                                                     <span class="notification-time">30 دقیقه پیش.</span>
                                                 </div>
@@ -181,7 +181,7 @@
                                         <span class="badge bg-c-green">3</span>
                                     </div>
                                 </div>
-                            </li>
+                            </li>*@
 
                             <partial name="UserLoginInfo" />
 
@@ -322,7 +322,7 @@
 
                                 <li class="pcoded-hasmenu active pcoded-trigger">
                                     <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-micon"><i class="feather icon-user"></i></span>
                                         <span class="pcoded-mtext">مدیریت کاربران</span>
                                     </a>
                                     <ul class="pcoded-submenu">
@@ -337,8 +337,8 @@
                                             </a>
                                         </li>
                                         <li class=" ">
-                                            <a href="dashboard-analytics.htm">
-                                                <span class="pcoded-mtext">داشبور آنالیز</span>
+                                            <a asp-controller="RolesManager" asp-action="RolesList" asp-area="Manage">
+                                                <span class="pcoded-mtext">نقش ها</span>
                                                 <span class="pcoded-badge label label-info ">جدید</span>
                                             </a>
                                         </li>

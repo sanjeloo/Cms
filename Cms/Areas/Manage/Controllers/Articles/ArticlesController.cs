@@ -1,5 +1,6 @@
 ﻿using DAL;
 using Entities.Entities.Articles;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -10,6 +11,7 @@ using ViewModels.Manage.Articles;
 
 namespace Cms.Areas.Manage.Controllers.Articles
 {
+    [Authorize(Roles = "admin,employe")]
     [Area("Manage")]
     public class ArticlesController : Controller
     {

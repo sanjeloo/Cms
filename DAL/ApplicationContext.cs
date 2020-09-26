@@ -1,4 +1,5 @@
 ﻿using Entities.Entities.Articles;
+using Entities.Entities.NewsLetters;
 using Entities.Entities.Products;
 using Entities.Entities.UserAndSecurity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -11,6 +12,7 @@ namespace DAL
     {
         public DbSet<Article> Articles { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<NewsLetter> NewsLetter { get; set; }
 
         public ApplicationContext(DbContextOptions options) : base(options)
         {

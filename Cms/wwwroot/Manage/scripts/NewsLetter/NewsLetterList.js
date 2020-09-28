@@ -36,12 +36,12 @@ $('#btnSend').click(function (event) {
     $('#frmSendNewsLetter').on('submit', function () {
         $('#frmSendNewsLetter').preventDefault();
     })
-
+    $('#loading').removeClass('hide')
     var model = $('#frmSendNewsLetter').serializeArray();
     $.ajax({
         url: '/Manage/NewsLetter/Send',
         type: 'post',
-        data: model,
+        data: { message: $('#message').val() },
         success: function (result) {
 
             $('#closeModal').trigger('click')
@@ -51,28 +51,14 @@ $('#btnSend').click(function (event) {
                 notify(result.message, 'top', 'left', '', 'success', '', '');
                 $('#large-Modal').modal('hide');
                 // $('#frmEditUser').trigger('reset');
-
+                $('#loading').addClass('hide')
             }
-            else if (result.status == 600) {
-                notify(result.message, 'top', 'left', '', 'danger', '', '');
-                //$.each(result.errors, function (i, error) {
-                //    $.each(error.errors, function (j, item) {
-                //         $('#allError').append(createErrorElement(item.errooMessage))
-                //     })
-                // })
-                console.log(result);
-            }
-            else if (result.status == 100) {
+            else if (result.status == 500) {
                 notify(result.message, 'top', 'left', '', 'danger', '', '');
                 console.log(result);
+                $('#loading').addClass('hide')
             }
-            else if (result.status == 404) {
-                notify(result.message, 'top', 'left', '', 'danger', '', '');
-                console.log(result);
-            }
-            else {
-                console.log(result);
-            }
+            
 
         },
         error: function (result) {

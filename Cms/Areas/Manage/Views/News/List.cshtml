@@ -1,13 +1,13 @@
-﻿@model IEnumerable<Article>
+﻿@model IEnumerable<tbl_News>
 <div class="page-body">
     <div class="row">
         <div class="col-sm-12">
             <!-- Product list card start -->
             <div class="card">
                 <div class="card-header">
-                    <h5 style="color:white">لیست مقالات</h5>
+                    <h5>لیست اخبار</h5>
                     <button style="display:none !important" type="button" id="showModal" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" data-modal="modal-13">
-                        <i class="icofont icofont-plus m-r-5"></i> Add Product
+                        <i class="icofont icofont-plus m-r-5"></i> 
                     </button>
                 </div>
                 <div class="card-block">
@@ -25,24 +25,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var article in Model)
+                                        @foreach (var News in Model)
                                         {
 
-                                            <tr id="@article.Id">
+                                            <tr id="@News.Id">
                                                 <td class="pro-list-img">
-                                                    <img src="\images\@article.Photo" class="img-fluid" alt="tbl">
+                                                    <img src="\images\@News.Photo" class="img-fluid" alt="tbl">
                                                 </td>
                                                 <td class="pro-name">
-                                                    <h6>@article.Title</h6>
-                                                    <span>@Html.Raw(article.Description)</span>
+                                                    <h6>@News.Title</h6>
+                                                    <span>@Html.Raw(News.Description)</span>
                                                 </td>
                                                 @*<td>$456</td>*@
                                                 <td>
-                                                    <label class="text-danger">@article.Abstract</label>
+                                                    <label class="text-danger">@News.Abstract</label>
                                                 </td>
                                                 <td class="action-icon">
-                                                    <button onclick="EditArticle(@article.Id)" class="m-r-15 text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="icofont icofont-ui-edit"></i></button>
-                                                    <button onclick="showDeleteModal(@article.Id)" class="text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="icofont icofont-delete-alt"></i></button>
+                                                    <button onclick="EditNews(@News.Id)" class="m-r-15 text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="icofont icofont-ui-edit"></i></button>
+                                                    <button onclick="showDeleteModal(@News.Id)" class="text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="icofont icofont-delete-alt"></i></button>
 
                                                 </td>
                                             </tr>
@@ -61,8 +61,8 @@
     <!-- Add Contact Start Model start-->
     <div class="md-modal md-effect-13 addcontact" id="modal-13">
         <div class="md-content">
-            <h3 class="f-26">ویرایش مقاله</h3>
-            <form id="frmEditArticle" method="post">
+            <h3 class="f-26">ویرایش خبر</h3>
+            <form id="frmEditNews" method="post">
                 <div class="input-group">
                     <img id="Photo" name="Photo" class="image" src="" />
                     @*<input type="text" class="form-control pname" placeholder="Prodcut Name">
@@ -119,5 +119,5 @@
 @section Scripts
 {
 
-    <script src="~/Manage/scripts/Articles/ArticlesList.js"></script>
+    <script src="~/Manage/scripts/News/NewsList.js"></script>
 }

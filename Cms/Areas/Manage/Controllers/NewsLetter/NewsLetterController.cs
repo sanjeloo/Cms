@@ -21,7 +21,7 @@ namespace Cms.Areas.Manage.Controllers.NewsLetters
             this.db = db;
         }
 
-      
+
         public IActionResult List() => View(db.NewsLetter.OrderByDescending(c => c.Id).ToList());
 
         [HttpPost]
@@ -37,17 +37,17 @@ namespace Cms.Areas.Manage.Controllers.NewsLetters
             return Json(false);
 
         }
-        public async Task<IActionResult> Send()
+        public async Task<IActionResult> Send(string message)
         {
             try
             {
 
-           string result = EmailAndSms.SendSms("این یک تست است", "09366733490");
-            return Json(true);
+                string result = EmailAndSms.SendSms(message, "09366733490");
+                return Json(new { status = 200, message = "پیامک با موفقیت ارسال گردید" });
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                return Json(false);
+                return Json(new { status = 500, message = "خطایی در هنگام ارسال پیامک رخ داد" });
             }
         }
 

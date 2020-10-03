@@ -4,25 +4,34 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Cms</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/lib/bootstrap/dist/css/bootsrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 ">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Cms</a>
+                <a class="navbar-brand" asp-area="Manage" asp-controller="Home" asp-action="Index">Cms</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse ">
+                    <ul class="navbar-nav flex-grow-1 flex-row-reverse ">
+                        <li class="nav-item background-primary">
+                            <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Index">صفحه اصلی</a>
+                        </li>
+                        <li class="nav-item color-info">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ListProduct">محصولات</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ListNews">اخبار</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ListArticles">مقالات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contactus">تماس باما</a>
                         </li>
                     </ul>
                 </div>
@@ -36,9 +45,9 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        @*<div class="container">
             &copy; 2020 - Cms - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+        </div>*@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

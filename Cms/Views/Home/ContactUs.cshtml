@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+    <style>
+        .col-md-3 {
+            background: #ff9b00;
+            padding: 4%;
+            padding-right: 4%;
+            padding-left: 4%;
+            border-top-right-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+    </style>
+    <div class="container contact">
+        <div class="row">
+            <form class="col-md-9">
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="fname">نام</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="fname" placeholder="نام را وارد کنید" name="fname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="lname">نام خانوادگی</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="lname" placeholder="نام خانوادگی را وارد کنید" name="lname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="email">ایمیل</label>
+                        <div class="col-sm-12">
+                            <input type="email" class="form-control  force-rtl" id="email" placeholder="ایمیل خود را وارد کنید" name="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="comment">نظر خود را وارد کنید</label>
+                        <div class="col-sm-12">
+                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-12">
+                            <button type="submit" class="btn btn-default btn-primary">ارسال</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="col-md-3">
+                <div class="contact-info">
+                    
+                    <img src="~/images/StaticImage/contact-image.png" />
+                    <h2>تماس باما</h2>
+                    <h4>نظرات شما سبب بهبودی عملکرد ما میباشد</h4>
+                </div>
+            </div>
+        </div>
+    </div>

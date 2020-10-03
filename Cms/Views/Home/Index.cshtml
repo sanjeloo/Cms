@@ -1,16 +1,64 @@
 ﻿@model List<Entities.Entities.UserAndSecurity.Users>
-@{
-    ViewData["Title"] = "Home Page";
-}
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">برنامه مدیریت محتوا</h1>
+    
 </div>
-    @foreach (var item in Model)
-    {
-        
-    }
+
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <div class="card  m-3">
+            <h5 class="card-title p-3 border-bottom">لیست محصولات سایت</h5>
+            <div class="card-body">
+                <a asp-action="ListProduct" asp-controller="Home">
+
+                    <img src="~/images/StaticImage/Products.jpg" class="mw-100" alt="محصولات" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-lg-12">
+        <div class="card  m-3">
+            <h5 class="card-title p-3 border-bottom">لیست مقالات سایت</h5>
+            <div class="card-body">
+                <a asp-action="ListArticles" asp-controller="Home">
+                    <img src="~/images/StaticImage/Article.png" class="mw-100" alt="مقالات" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-lg-12">
+        <div class="card  m-3 ">
+            <h5 class="card-title p-3 border-bottom ">اخبار سایت</h5>
+            <div class="card-body">
+                <a asp-action="ListNews" asp-controller="Home">
+                    <img src="~/images/StaticImage/News.jpg" class="mw-100" alt="اخبار" />
+                   
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="card m-10">
+    <h5 class="card-title">لیست محصولات سایت</h5>
+    <div class="card-body">
+
+        <a asp-action="ListArticles" asp-controller="Home">
+
+            <img src="~/images/StaticImage/Products.jpg" style="max-width:100%" alt="محصولات" />
+        </a>
+    </div>
+</div>
+<div class="card m-10">
+    <h5 class="card-title">لیست محصولات سایت</h5>
+    <div class="card-body">
+
+        <a asp-action="ListNews" asp-controller="Home">
+
+            <img src="~/images/StaticImage/Products.jpg" style="max-width:100%" alt="محصولات" />
+        </a>
+    </div>
+</div>*@
 <a asp-controller="Home" asp-action="Index" asp-area="Manage">
     <div class="btn btn-default col-md-3">
         Manage

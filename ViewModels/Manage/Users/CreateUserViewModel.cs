@@ -9,6 +9,7 @@ namespace ViewModels.Manage.Users
 {
     public class CreateUserViewModel
     {
+        [Display(Name = "نام")]
         public string FirstName { get; set; }
         public string LastName { get; set; }
         [Display(Name = "نام کاربری")]

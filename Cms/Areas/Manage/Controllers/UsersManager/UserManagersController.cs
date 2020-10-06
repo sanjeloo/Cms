@@ -52,7 +52,7 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
 
             return View();
         }
-
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> CreateUser(CreateUserViewModel model)
         {
@@ -72,7 +72,9 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Photo = model.Photo,
+                Availability = true,
                 Gender = model.Gender
+                
 
             };
             //todo sms verification
@@ -100,7 +102,7 @@ namespace Cms.Areas.Manage.Controllers.UsersManager
                 });
             }
         }
-
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> CheckUserName(string UserName)
         {

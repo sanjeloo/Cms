@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
@@ -8,7 +9,7 @@ namespace Cms.Areas.Manage.Controllers.Uploader
 {
     [Area("Manage")]
     [Consumes("multipart/form-data")]
-
+    [AllowAnonymous]
     public class UploaderController : Controller
     {
         [HttpPost]

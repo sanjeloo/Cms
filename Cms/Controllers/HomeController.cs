@@ -9,9 +9,11 @@ using Cms.Models;
 using Microsoft.AspNetCore.Identity;
 using Entities.Entities.UserAndSecurity;
 using DAL;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cms.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

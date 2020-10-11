@@ -78,5 +78,55 @@ namespace Cms.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> NewsLetter(string Phone)
+        {
+            try
+            {
+                if (Phone.Length == 11)
+                {
+
+                    if (!db.NewsLetter.Any(c => c.Mobile == Phone))
+                    {
+                        await db.NewsLetter.AddAsync(new Entities.Entities.NewsLetters.NewsLetter() { Mobile = Phone, CreationDate = DateTime.Now });
+                       await db.SaveChangesAsync();
+                        return Json(new
+                        {
+                            status = 200, //you can see the datails of status code in Global/statusCode 
+                            error = 0,
+                            message = "شما با موفقیت در خبرنامه عضو شدید از اینکه باما همراه هستید سپاسگزاریم"
+
+                        });
+                    }
+
+                    else
+                        return Json(new
+                        {
+                            status = 600, //you can see the datails of status code in ~/Global/statusCodes
+                            errors = ModelState.Values.Where(e => e.Errors.Count > 0).ToList(),
+                            message = "کاربر گرامی این شماره قبلا در سیستم ثبت شده است"
+                        });
+                }
+                else
+                    return Json(new
+                    {
+                        status = 100, //you can see the datails of status code in ~/Global/statusCodes
+                        errors = ModelState.Values.Where(e => e.Errors.Count > 0).ToList(),
+                        message = "لطفا در وارد کردن اطلاعات دقت کنید"
+                    });
+
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    status = 100, //you can see the datails of status code in ~/Global/statusCodes
+                    errors = ModelState.Values.Where(e => e.Errors.Count > 0).ToList(),
+                    message = "لطفا در وارد کردن اطلاعات دقت کنید"
+                });
+            }
+
+        }
     }
 }

@@ -2,9 +2,9 @@
 
 <h4>ورود</h4>
 <hr />
-<div class="row m-5">
-    <div class="col-md-4 force-rtl m-6 background-info">
-        <form asp-action="Login" method="post">
+<div class="row ">
+    <div class="col-md-8 force-rtl background-primary">
+        <form class="m-4" asp-action="Login" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="UserName" class="control-label"></label>
@@ -25,7 +25,7 @@
                 <input asp-for="ReturnUrl" hidden class="form-control" />
             </div>
             <div class="form-group">
-                <input type="submit" value="ورود" class="btn btn-flickr" />
+                <input type="submit" value="ورود" class="btn btn-facebook" />
 
                 <a asp-area="" class="btn btn-github btn-success" asp-controller="Account" asp-action="Create">ثبت نام</a>
             </div>

@@ -56,16 +56,22 @@
             </div>
         </nav>
     </header>
+    <div id="loading" class="aminpreloader hide"></div>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        @*<div class="container">
-                &copy; 2020 - Cms - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>*@
+    <footer class="border-top footer text-muted ">
+        <div class="container force-rtl">
+
+            <input type="tel" class="force-rtl  col-md-4 " id="NewsLetterNumber" name="Number" placeholder=" جهت عضویت در خبرنامه شماره تلفن خود را وارد کنید" />
+            <button id="NewsLetter" class="btn  btn-success">عضویت</button>
+            &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+            &copy; طراحی و توسعه توسط امین رحمتی
+
+        </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="\Manage\bower_components\jquery-ui\js\jquery-ui.min.js"></script>
